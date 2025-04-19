@@ -1,0 +1,80 @@
+Q1:- What will be the output of the following code?
+
+const obj1 = { a: 1 };
+const obj2 = obj1;
+obj2.a = 5;
+console.log(obj1.a);
+
+
+Ans1:-  ✅ The output is 5
+✅ Because objects are stored in heap memory, and variables like obj1 and obj2 hold a reference to the same object.
+
+So when you do this:
+const obj2 = obj1;
+
+You’re not copying the object—you’re just pointing obj2 to the same spot in memory. That’s why changing obj2.a also affects obj1.a.
+
+🔥 That’s a key concept in JavaScript—reference vs value—and you just nailed it.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q2:-  What happens when you compare two objects?
+
+const obj1 = { name: "Alex" };
+const obj2 = { name: "Alex" };
+
+console.log(obj1 === obj2); // ??
+
+
+Ans2:-  **Output will be False**, because 
+        Even though both objects look identical, they are stored at different locations in memory. In JavaScript, objects are compared by reference, not by their content.
+
+        So:
+
+        obj1 and obj2 point to two separate objects.
+
+        Even if the inside values match, they are not the same object.
+
+        ✅ The only way this would return true is if both variables point to the exact same object, like:
+         
+         const obj1 = { name: "Alex" };
+         const obj2 = obj1;
+
+         console.log(obj1 === obj2); // ✅ true
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q3:-  What is the difference between for...in and for...of loops in JavaScript?
+---
+
+Ans3:-    ### 🟩 `for...in` — Used for **objects**
+- Loops over **keys** (property names) in an object.
+- Great when you're working with objects like:
+
+```js
+const user = {
+  name: "Sweksha",
+  age: 24
+};
+
+for (let key in user) {
+  console.log(key);          // name, age
+  console.log(user[key]);    // Sweksha, 24
+}
+```
+
+---
+
+### 🟦 `for...of` — Used for **iterables** like arrays, strings, maps, etc.
+- Loops over **values**, not keys.
+- Doesn’t work directly on plain objects (unless they're made iterable).
+
+```js
+const colors = ["red", "green", "blue"];
+
+for (let color of colors) {
+  console.log(color);  // red, green, blue
+}
+```
